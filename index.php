@@ -18,7 +18,6 @@ $data = [
 
 function array_flatten($arr, &$flattened = [])
 {
-    ;
     foreach($arr as $key => $val)
     {
         if(is_array($val)){
