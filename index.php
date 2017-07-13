@@ -16,6 +16,7 @@ $data = [
     ],
 ];
 
+
 function array_flatten($arr, &$flattened = [])
 {
     foreach($arr as $key => $val)
@@ -24,10 +25,8 @@ function array_flatten($arr, &$flattened = [])
             array_flatten($val, $flattened);
 
             continue;
-        } 
-        
+        }
         $flattened[] = $val;
-        
     }
 
     return $flattened;
@@ -36,12 +35,9 @@ function array_flatten($arr, &$flattened = [])
 $staff = array_flatten($data);
 
 $olders = [];
-
-
+$beOlder = Carbon::today()->subYears(2);
 foreach($staff as $member)
 {
-    $beOlder = Carbon::today()->subYears(2);
-
     if($member->entry->lt($beOlder)){
         $olders[] = $member;
     }
@@ -49,5 +45,5 @@ foreach($staff as $member)
 
 foreach($olders as $member)
 {
-    $member->review();
+    dump('Revisando: ' . $member->name);
 }
