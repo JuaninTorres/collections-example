@@ -12,4 +12,20 @@ class StaffMember
         $this->role = $role;
         $this->entry = $entry;
     }
+
+    /**
+     * @return bool
+     */
+    public function isOld()
+    {
+        $beOlder = Carbon::today()->subYears(2);
+
+        return $this->entry->lt($beOlder);
+    }
+
+    
+    public function review()
+    {
+        dump('Revisando: ' . $this->name);
+    }
 }
